@@ -102,7 +102,7 @@ def saveAgent(request):
     if settings.DEBUG:
         request.META['HTTP_HOST'] = '127.0.0.1:8000'
     else:
-        request.META['HTTP_HOST'] = 'www.mysite.com'
+        request.META['HTTP_HOST'] = 'bambi.pythonanywhere.com'
 
     # pass the post form data
     request.POST = {
