@@ -1,0 +1,132 @@
+   {% extends 'bambi/base.html' %}
+  {% block content %}
+
+
+ <div class="container-fluid">
+                    <div class="page-head">
+                        <h4 class="mt-2 mb-2">New Membership</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card m-b-30">
+                                <div class="card-body">
+                                    <h5 class="header-title pb-3">Please fill in the details about the new member</h5>
+                                    <div class="wizard">
+                                        <h2>Profile</h2>
+                                        <section class="mt-3 ml-2">
+                                                         <div class="form-group row">
+
+                                                <label class="col-lg-3 control-label" for="name"> Full Name <span class="danger">*</span></label>
+                                                <div class="col-lg-7">
+                                                    <input id="name" onchange="nameUpdate()" name="name" type="text" class="required form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label " for="surname"> Contact<span class="danger">*</span></label>
+                                                <div class="col-lg-7">
+                                                    <input id="contact" name="contact" onchange="contactUpdate()" type="text" class="required form-control">
+
+                                                </div>
+                                            </div>
+                                           <div class="form-group row">
+                                                <label class="col-lg-3 control-label " for="email">Email <span class="danger">*</span></label>
+                                                <div class="col-lg-7">
+                                                    <input id="email" name="email" onchange="emailUpdate()" type="text" class="required email form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label " for="address">Address <span class="danger">*</span></label>
+                                                <div class="col-lg-7">
+                                                    <input id="address" onchange="addressUpdate()" name="address" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </section>  
+
+                                        <h2>Account</h2>
+                                        <section class="mt-3 ml-2">
+                                            <div class="form-group row">
+
+                                                <label class="col-lg-3 control-label" for="name"> Funds <span class="danger">*</span></label>
+                                                <div class="col-lg-7">
+                                                    <input id="balance" onchange="fundsUpdate()" name="balance" type="text" class="required form-control">
+                                                </div>
+                                            </div>
+                                        
+
+                                        </section>
+
+                                        <h2>Biometric Info</h2>
+                                        <section class="mt-3 ml-2">
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <label class="cr-styled">
+                                                        <input type="checkbox">
+                                                        <i class="fa"></i> 
+                                                        Check this if USB Fingerprint Device is plugged in
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <h2>Summary</h2>
+                                        <section class="mt-3 ml-2">
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <ul class="list-unstyled ml-3">
+                                                        <li id="nameSummary" class="mt-2">Jonathan Smith </li>
+                                                        <li id="contactSummary" class="mt-2">Balance : </li>
+                                                        <li id="emailSummary" class="mt-2">jonathan@smith.com</li>
+                                                        <li id="addressSummary" class="mt-2">Your city, Cityname.</li>
+                                                        <li id="balanceSummary" class="mt-2">Balance : </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                       
+                                    </div>
+                                                                              
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--END ROW-->
+
+                               
+                    
+                </div><!--end container-->
+
+
+
+
+
+
+
+
+
+<script>
+function nameUpdate(e) {
+   document.getElementById("nameSummary").innerText = "Full Name : " + document.getElementById("name").value;  
+}
+
+function emailUpdate(e) {
+   document.getElementById("emailSummary").innerText = "Email : " + document.getElementById("email").value;  
+}
+
+function contactUpdate(e) {
+   document.getElementById("contactSummary").innerText = "Contact : " + document.getElementById("contact").value;  
+}
+
+function addressUpdate(e) {
+   document.getElementById("addressSummary").innerText = "Address : " + document.getElementById("address").value;  
+}
+
+function fundsUpdate(e) {
+   document.getElementById("balanceSummary").innerText = "Balance : Ugx " + document.getElementById("balance").value;  
+}
+    
+</script>
+
+
+
+
+                {% endblock content %}

@@ -1,0 +1,86 @@
+   {% extends 'bambi/base.html' %}
+  {% block content %}
+
+     
+
+
+
+
+
+
+
+
+
+
+                <div class="container-fluid">
+                    <div class="page-head">
+                        <h4 class="my-2">Agent Center Wizard</h4>
+                    </div>
+                             
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card m-b-30">
+                                <div class="card-body">
+                                    <h5 class="header-title pb-3">Instructions</h5>
+                                    <div class="general-label">
+                                        <form role="form" action={% url 'bambi:saveAgent' %} method="post"  enctype="multipart/form-data">                                            
+                                            {% csrf_token %}  
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Agent Name</label>
+                                                <div class="col-10">
+                                                    <input name="name" class="form-control" type="search" id="example-search-input">
+                                                </div>
+                                            </div>
+
+                                              <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Email</label>
+                                                <div class="col-10">
+                                                    <input class="form-control required" type="email" name="email">
+                                                </div>
+                                            </div>
+                                            
+                                          
+                    
+
+
+
+                                            <div class="form-group row">
+                                                <label for="example-tel-input" class="col-2 col-form-label">Contact</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" name="contact" type="tel" id="example-tel-input" placeholder="1234">
+                                                </div>
+                                            </div>
+                                            
+
+                                             <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Address</label>
+                                                <div class="col-10">
+                                                     <input id="address" name="address" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                      
+                                 
+
+                                              <div class="form-group row">
+                                                <label for="example-url-input" class="col-2 col-form-label">Website</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" name="website" type="url" id="example-url-input" placeholder="https://bambihealthcare.com">
+                                                </div>
+                                            </div>
+
+
+                                        <button type="submit" class="btn btn-primary">Add New Agent</button>
+
+                                        </form>                                    
+                                    </div>  
+                                    
+                                                              
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                    
+                </div><!--end container-->
+
+
+                {% endblock content %}
