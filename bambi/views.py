@@ -58,15 +58,15 @@ def newAgent(request):
         return render(request,"bambi/login.html")
 
 def saveAgent(request):
-    # newUser = UserInviteSerializer.create(email=request.POST.get('email'),)
-    newUser = UserInviteSerializer(data={'email':request.POST.get('email')})
-    
+    newU = UserInviteSerializer()
+    # newUser = UserInviteSerializer(data={'email':request.POST.get('email')})
+    aa = newU.validate({'email':request.POST.get('email')})
     # newUser.email = request.POST.get('email')
     # newUser.validate({'email':request.POST.get('email')})
     # newUser.email = request.POST.get('email')
     # newUser.is_valid()
-    createdUser = newUser.create({'email':request.POST.get('email')})
-    print(createdUser)
+    newUser = newU.create(aa)
+    print(newUser)
     # print(newUser)
 
     # if newUser.is_valid():
@@ -78,7 +78,7 @@ def saveAgent(request):
     
     agent = Agent(name=request.POST.get('name'),
                   contact=request.POST.get('contact'),
-                  user=createdUser,
+                  user=newUser,
                   email=request.POST.get('email'),
                   address=request.POST.get('address'),
                   status="invite")
