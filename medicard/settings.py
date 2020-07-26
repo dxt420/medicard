@@ -39,7 +39,7 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'bambi',
+    'django.contrib.admin',
      'allauth',
     'allauth.account',
 
@@ -55,6 +56,9 @@ INSTALLED_APPS = [
     
     'rest_auth',
     'allauth.socialaccount',
+
+    'notify'
+    
     
     
    
@@ -93,6 +97,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 
             ],
+            'libraries':{
+            'my_tags': 'bambi.template_tags.my_tags',
+            }
         },
     },
 ]
@@ -154,3 +161,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# LOGOUT_REDIRECT_URL = 'allauth.account_login'
+# LOGIN_URL = 'login'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'omonaderrick25@gmail.com'
+EMAIL_HOST_PASSWORD = 'abaloflorence'
+EMAIL_PORT = 587

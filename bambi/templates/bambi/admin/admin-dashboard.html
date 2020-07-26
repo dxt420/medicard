@@ -1,0 +1,105 @@
+  {% extends 'bambi/admin/base.html' %}
+
+   {% block css %}
+
+    <link href="/static/bambi/assets/plugins/morris-chart/morris.css" rel="stylesheet">
+        {% endblock css %}
+
+
+
+  {% block content %}
+  <div class="container-fluid">
+                    <div class="page-head">
+                        <h4 class="mt-2 mb-2">Dashboard</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3">
+                                   <div class="widget-box bg-white m-b-30">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                                <div class="text-center"><i class="ti ti-eye"></i></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="dynamicbar">Loading..</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <h2 class="m-0 counter">0</h2>
+                                                <p>Visits </p> 
+                                            </div>
+                                        </div>
+                                   </div> 
+                                </div>
+                                <div class="col-lg-3 col-sm-3">
+                                   <div class="widget-box bg-white m-b-30">
+                                        <div class="row d-flex align-items-center text-center">
+                                            <div class="col-4">
+                                                <div class="text-center"><i class="ti ti-user"></i></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="inlinesparkline">Loading..</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <h2 class="m-0 counter">0</h2>
+                                                <p>Earnings </p> 
+                                            </div>
+                                        </div>
+                                   </div> 
+                                </div>
+                               
+                             
+
+                              <div class="col-lg-3 col-sm-3">
+                                    <div class="widget-box bg-white m-b-30">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                                <div class="text-center"><i class="ti ti-money"></i></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="dynamicbar">Loading..</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <h2 class="m-0 counter">0</h2>
+                                                <p> Agents </p> 
+                                            </div>
+                                        </div>
+                                   </div> 
+                                </div>
+
+
+                                 <div class="col-lg-3 col-sm-3">
+                                    <div class="widget-box bg-white m-b-30">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-4">
+                                                <div class="text-center"><i class="ti ti-money"></i></div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="dynamicbar">Loading..</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <h2 class="m-0 counter">0</h2>
+                                                <p> Members</p> 
+                                            </div>
+                                        </div>
+                                   </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                                        
+                    
+                </div><!--end container-->
+
+
+
+{% endblock content %}
+
+
+
+{% block js %}
+   <script src="/static/bambi/assets/plugins/chart-js/Chart.bundle.js"></script>
+        <script src="/static/bambi/assets/plugins/morris-chart/raphael-min.js"></script>
+        <script src="/static/bambi/assets/plugins/morris-chart/morris.js"></script>
+        <script src="/static/bambi/assets/pages/dashboard-init.js"></script>
+{% endblock js %}

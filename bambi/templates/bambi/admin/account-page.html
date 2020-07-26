@@ -1,0 +1,323 @@
+   {% extends 'bambi/admin/base.html' %}
+
+
+     {% block css %}
+
+        <!-- Sweet Alert css -->
+        <link href="/static/bambi/assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        {% endblock css %}
+
+
+
+  {% block content %}
+
+
+
+ <div class="container-fluid">
+                    <div class="page-head"></div>
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-12">
+                            <div class="card m-b-30 border-0">
+                                <div class="row text-center text-white profile-block" style="height: 50px;">
+                                   
+                                </div>
+                                {% comment %} <div class="card-body pro-img mx-auto text-center">
+                                    <img src="assets/images/users/avatar-7.jpg" alt="" class="rounded-circle mx-auto d-block">
+                                </div> {% endcomment %}
+
+                                <div class="text-center">
+                                    <h5>{{member.name}}'s Funds</h5>
+                                  
+
+
+
+
+ 
+                                    
+                                    
+                                     
+                                 
+                                  
+                                </div>
+                                
+                                <div class="row text-center profile-block">
+                                    <div class="col align-self-center py-3 ">
+                                        <p class="profile-count">0</p>
+                                        <p class="mb-0">Balance</p>
+                                    </div>
+                                  
+                                </div>
+
+
+                                <div class="row text-center profile-block">
+                                    <div class="col align-self-center py-3">
+
+                                         <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalform">
+                                        Update Figures
+                                      </button>
+  
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModalform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelform" aria-hidden="true">
+                                          <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Update Account Balance</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                  </div>
+
+                                                     <form role="form"  class="form-horizontal form-material" id="former" method="post"  enctype="multipart/form-data">                                            
+                                                                    {% csrf_token %} 
+                                                               
+                                                  <div class="modal-body">
+                                                       <div class="row">
+                                                          <div class="col-md-12">
+                                                              <div class="form-group">
+                                                                  <label for="field-1" class="control-label">Current Balance is <b>UGX 0</b>. For more detail on previous updates visit the <a href="#">log page</a></label>
+                                                                  <input type="text" class="form-control" name="balance" id="field-1" required placeholder="e.g 20000">
+                                                              </div>
+                                                          </div>
+                                                          
+                                                      </div>
+                                                     
+                                                      
+                                                   
+                                                  </div>                                          
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                      <button type="submit" class="btn btn-primary">Update Balance</button>
+                                                  </div>
+
+                                                  </form>
+                                              </div>
+                                          </div>
+                                      </div>  
+                                        <!-- <a href="#" class="btn btn-outline-info mb-3">Update Figures</a>  -->
+
+                                    
+
+                                    
+                                    </div>
+
+
+                                               <div class="col align-self-center py-3">
+
+                                         <!-- Button trigger modal -->
+                                    {% comment %} <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalform">
+                                        Update Figures
+                                      </button> {% endcomment %}
+
+
+                                       <a href="#" class="btn btn-outline-info mb-3">Generate Reports</a> 
+
+
+    </div>
+                                 
+                                    <!-- <div class="col-6 align-self-center py-3">
+                                        <p class="profile-count">0</p>
+                                        <p class="mb-0">Check-Ins</p>
+                                    </div> -->
+                                </div>
+
+
+                                
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="card m-b-30 contact">
+                                        <div class="card-body">
+                                            <h6 class="header-title pb-3">Contact</h6>
+                                            <ul class="list-unstyled">
+                                                <li class=""><i class="fa fa-phone mr-2"></i>  {{member.contact}}</li>
+                                                <li class="mt-2"><i class="fa fa-envelope-o mt-2 mr-2"></i>  {{member.email}}</li>
+                                                <li class="mt-2"><i class="fa fa-map-marker mt-2 mr-2"></i>{{member.address}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-sm-12">
+                        
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <h5 class="header-title pb-3">Activities</h5>
+                                            <div id="user-activities" class="tab-pane">
+                                                <div class="timeline-2">
+
+                                                    {% if related_logs %}
+                                                    {% for log in related_logs %}
+
+
+                                                    <div class="time-item">
+                                                        <div class="item-info">
+                                                            <div class="text-muted">5 minutes ago</div>
+                                                            <p><strong><a href="#" class="text-info">Robert Carlile</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {% endfor %}
+
+
+                                                    {% else %}
+
+                                                    NO shit
+
+                                                    {% endif %}
+
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end row-->
+                        </div>            
+                    </div><!--end row-->                   
+                    
+                </div><!--end container-->
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock content %}
+
+
+
+   {% block js %}
+
+   <!-- Sweet Alert Js  -->
+        <script src="/static/bambi/assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+        <script src="/static/bambi/assets/pages/jquery.sweet-alert.init.js"></script>   
+
+
+        <script>
+
+
+    function updateBalance(){
+
+
+
+                        swal({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You are about to update the balance a Member! ',
+                            showConfirmButton: true,
+                            showCancelButton: true,
+                          //  confirmButtonColor: '#3085d6',
+                          //  cancelButtonColor: '#d33',
+                            confirmButtonText: 'Okay!'
+                             
+                        }).then((result) => {
+
+                            
+                            //if (result.value) {
+                            //  Swal.fire(
+                            //    'Deleted!',
+                            //    'Your file has been deleted.',
+                            //    'success'
+                            //  )
+                            var frm = $('#former');
+                            var url = "{% url 'bambi:updateBalance' member.membership_id %}";
+   
+          
+            $.ajax({
+            
+                
+                url: url,
+                data: frm.serialize(),
+                async:true,
+            
+                success: function (data) {
+            
+               
+               console.log("pass"); 
+            
+               
+               console.log(data); 
+
+               if(data['Success']){
+       
+
+                        console.log("sasasasasas"); 
+
+
+
+                             swal({
+                                    title: " ",
+                                    text: "Balance Updated deleted.",
+                        
+                          
+                                 });
+
+  		                    window.location.href = '/accountPage/{{member.membership_id}}';
+
+                
+               }
+
+
+
+             
+
+
+
+               
+
+
+
+                },
+                error: function(data) {
+                    // $("#MESSAGE-DIV").html("Something went wrong!");
+                    console.log("fail"); 
+                    console.log(data); 
+                
+                }
+            });
+            return false;
+
+
+            
+
+                                
+                        }, function(dismiss){
+   if(dismiss == 'cancel'){
+       // function when cancel button is clicked
+       alert("Cance;;ed")
+   }
+});
+
+
+
+       
+    }
+
+
+</script>
+
+
+
+<script>
+
+$('#former').on('submit', function (e) {
+    //your awesome code here
+    e.preventDefault();
+    updateBalance();
+})
+
+
+</script>
+
+        {% endblock js %}

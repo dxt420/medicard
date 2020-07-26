@@ -1,0 +1,197 @@
+   {% extends 'bambi/admin/base.html' %}
+
+
+
+      {% block css %}
+
+        <!-- Sweet Alert css -->
+        <link href="/static/bambi/assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        {% endblock css %}
+
+
+
+
+
+  {% block content %}
+ 
+     <div style="visibility: hidden; height: 0px;">
+       <button  type="button" class="btn btn-primary" id="sa-error">Click me!</button> 
+     </div>
+
+
+
+
+
+
+
+
+
+
+                <div class="container-fluid">
+                    <div class="page-head">
+                        <h4 class="my-2">Agent Center Wizard</h4>
+                    </div>
+                             
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card m-b-30">
+                                <div class="card-body">
+                                    <h5 class="header-title pb-3">Instructions</h5>
+                                    <div class="general-label">
+                                        <form role="form"  id="former" method="post"  enctype="multipart/form-data">                                            
+                                            {% csrf_token %}  
+                                            <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Agent Name</label>
+                                                <div class="col-10">
+                                                    <input name="name" class="form-control required"  required type="search" id="example-search-input">
+                                                </div>
+                                            </div>
+
+                                              <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Email</label>
+                                                <div class="col-10">
+                                                    <input class="form-control required" required type="email" name="email">
+                                                </div>
+                                            </div>
+                                            
+                                          
+                    
+
+
+
+                                            <div class="form-group row">
+                                                <label for="example-tel-input" class="col-2 col-form-label">Contact</label>
+                                                <div class="col-10">
+                                                    <input class="form-control required" name="contact" required type="tel" id="example-tel-input" placeholder="0789836372">
+                                                </div>
+                                            </div>
+                                            
+
+                                             <div class="form-group row">
+                                                <label for="example-search-input" class="col-2 col-form-label">Address</label>
+                                                <div class="col-10">
+                                                     <input id="address" name="address" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                      
+                                 
+
+                                              <div class="form-group row">
+                                                <label for="example-url-input" class="col-2 col-form-label">Website</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" name="website" type="url" id="example-url-input" placeholder="https://bambihealthcare.com">
+                                                </div>
+                                            </div>
+
+
+                                        <button type="submit"  class="btn btn-primary">Add New Agent</button>
+
+                                        </form>                                    
+                                    </div>  
+                                    
+                                                              
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                    
+                </div><!--end container-->
+
+
+                {% endblock content %}
+
+
+            {% block js %}
+
+   <!-- Sweet Alert Js  -->
+        <script src="/static/bambi/assets/plugins/sweet-alert/sweetalert2.min.js"></script>
+        <script src="/static/bambi/assets/pages/jquery.sweet-alert.init.js"></script>   
+
+
+        <script>
+
+         function addAgent(){
+  
+        
+        var frm = $('#former');
+        var url = "{% url 'bambi:saveAgent' %}";
+      
+            console.log(frm.serialize());
+            $.ajax({
+                type: frm.attr('method'),
+                url: url,
+                data: frm.serialize(),
+                async:true,
+            
+                success: function (data) {
+            
+               
+               console.log("pass"); 
+            
+               
+               console.log(data); 
+
+               if(data['Integrity Error']){
+                    swal({
+                        title:"Possible Duplicate",
+                        text: "The email you are trying to add has already been added. Please cross-check agents to confirm",      
+                    });
+
+                
+
+               
+               }
+
+
+
+                if(data['Mailed']){
+             
+
+
+                        swal({
+                             position: 'top-end',
+                                icon: 'success',
+                                title: 'Your agent has been saved. A password creation link was sent to the mail',
+                                showConfirmButton: false,
+                                timer: 5000
+                     }).then((result) => {
+                         
+
+  		                    window.location.href = '/agents';
+                        });
+
+                        
+
+              
+
+               
+               }
+
+                },
+                error: function(data) {
+                    // $("#MESSAGE-DIV").html("Something went wrong!");
+                    console.log("fail"); 
+                    console.log(data); 
+                
+                }
+            });
+            return false;
+        // });
+    }
+
+</script>
+
+
+
+<script>
+
+$('#former').on('submit', function (e) {
+    //your awesome code here
+    e.preventDefault();
+    addAgent();
+})
+
+
+</script>
+
+        {% endblock js %}
