@@ -25,7 +25,7 @@ SECRET_KEY = '%te#^untzrhjr95n=7vsh15zuh^hba-37+oo9*5b+kd9=0fy8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bambi.pythonanywhere.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['bambicard.pythonanywhere.com','localhost','127.0.0.1']
 
 
 AUTHENTICATION_BACKENDS = (
