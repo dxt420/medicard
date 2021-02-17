@@ -19,6 +19,18 @@ def getDisplayName(context):
     name = Agent.objects.get(email=request.user.email)
     return name
 
+
+
+@register.simple_tag(takes_context=True)
+def hasPassword(context,id):
+    request = context['request']
+    customUser = Agent.objects.get(agent_id=id).user
+    print("Hi")
+    print(customUser.has_usable_password())
+    return customUser.has_usable_password()
+    
+   
+    
 # @register.simple_tag
 # def getLessonVideoUrl(courseID,chapterID,lessonID):
 #     lesson = db.child("chapters").child(courseID).child(chapterID).child("lessons").child(lessonID).get()

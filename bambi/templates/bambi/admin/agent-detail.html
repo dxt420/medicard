@@ -1,4 +1,6 @@
-   {% extends 'bambi/admin/base.html' %}
+     {% extends 'bambi/admin/base.html' %}
+   {% load my_tags %} 
+ 
 
 
      {% block css %}
@@ -29,10 +31,25 @@
                                     {% comment %} <p class="text-muted">Email Sent</p> {% endcomment %}
 
                                     {% comment %} <p class="text-muted">Email Sent</p> {% endcomment %}
+            {% ifequal agent.status 'invite' %}
 
-                            <p class="text-muted"> <a href="javascript:void(0);"> <span data-container="body" data-toggle="popover" title="" data-placement="right" data-content="Agent password not set. Agent will need to create a password to access respective account. A password creation link was sent to their e-mail" data-original-title="Status Description" aria-describedby="popover812469" class="badge bg-secondary m-1">Inactive</span></a></p>
 
+{% hasPassword agent.agent_id  as has_password_flag %}
 
+{% if has_password_flag %} 
+    {% comment %} <p>  has password </p> {% endcomment %}
+                                <p class="text-muted"> <a href="javascript:void(0);"> <span data-container="body" data-toggle="popover" title="" data-placement="right" data-html="true" data-content="Agent successfully set their password. Proceed with account activation <a href='#' class='btn btn-outline-info'>activate</a>" data-original-title="Status Description" aria-describedby="popover812469" class="badge bg-secondary m-1">Invite</span></a></p>
+
+{% else %} 
+  <p>  no password </p>
+{% endif %}
+
+             {% comment %} {% if agent.user 'invite' %} {% endcomment %}
+           
+            
+                            {% comment %} <p class="text-muted"> <a href="javascript:void(0);"> <span data-container="body" data-toggle="popover" title="" data-placement="right" data-content="Agent password not set. Agent will need to create a password to access respective account. A password creation link was sent to their e-mail" data-original-title="Status Description" aria-describedby="popover812469" class="badge bg-secondary m-1">Invite</span></a></p> {% endcomment %}
+
+{% endifequal %}
 
 
 

@@ -118,11 +118,20 @@ def saveAgent(request):
 
                     
         agent.save()
+
+        print(agent)
+        msg = request.POST.get('name') + " invited to complete Agent Onboarding by admin"
+        
+        log = Log(log_message=msg,log_user_id=str(request.user.id),log_secondary_user_id=str(agent.agent_id),log_type="Success")
+
+        log.save()
+        
+        
         # add the absolute url to be be included in email
         if settings.DEBUG:
             request.META['HTTP_HOST'] = '127.0.0.1:8000'
         else:
-            request.META['HTTP_HOST'] = 'bambi.pythonanywhere.com'
+            request.META['HTTP_HOST'] = 'bambicard.pythonanywhere.com'
 
         # pass the post form data
         request.POST = {
@@ -130,6 +139,10 @@ def saveAgent(request):
             'csrfmiddlewaretoken': get_token(HttpRequest())
         }
         PasswordResetView.as_view()(request)  # email will be sent!
+
+
+        
+       
 
         context = {
             'Mailed': 'Mailed'

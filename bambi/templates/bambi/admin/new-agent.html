@@ -84,8 +84,13 @@
                                             </div>
 
 
-                                        <button type="submit"  class="btn btn-primary">Add New Agent</button>
+                                        <button id="submitter" type="submit"  class="btn btn-primary">Add New Agent</button>
 
+                      
+                                        <button id="loader" style="display:none;" class="btn btn-primary" type="button" disabled>
+                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                        Loading...
+                                        </button>
                                         </form>                                    
                                     </div>  
                                     
@@ -187,11 +192,19 @@
 
 $('#former').on('submit', function (e) {
     //your awesome code here
+
+
+       $('#submitter').hide();
+     $('#loader').show();
     e.preventDefault();
     addAgent();
 })
 
 
 </script>
+
+
+
+
 
         {% endblock js %}
